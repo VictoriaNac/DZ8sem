@@ -16,7 +16,7 @@ def find_data() -> None:
     """Печатает результат поиска по справочнику."""
     with open('book.txt', 'r', encoding='utf-8') as file:
         data = file.read().split('\n')
-    print('\n'join(data))
+    print('\n'.join(data))
     data_to_find = input('Введите данные для поиска: ')
     print(search(data, data_to_find))
 
@@ -31,7 +31,30 @@ def search(book: str, info: str) -> str:
     elif len(result)>1:
         print()
         print('-----------------')
-        print('\n'join(result))
+        print('\n'.join(result))
         new_info = input ('ВВедите данные для уточнения')
         return search(result, new_info)
     return 'Совпадений не найдено'
+
+def change()-> None:
+    """Изменение/удаление данных в справочнике."""
+    with open('book.txt', 'r', encoding='utf-8') as file^
+        data = file.read().split('\n')
+    print('\n'.join(data))
+    data_to_edit = input('Введите данные для поиска:')
+    data_to_edit = search(data, data_to_edit)
+    mode = input('Удалить или изменить? 1 - удалить, 2 - заменить')
+    if mode == '1':
+        data.remove(data_to_edit)
+    elif mode == '2':
+        data[data.index(data_to_edit)] = enter_contact()
+
+    with open('book.txt', 'w', encoding='utf-8') as file:
+        file.write('\n'.join(data))
+
+
+def enter_contact() -> str:
+    flo = input('Введите ФИО:')
+    phone = input('Введите номер телефона: ')
+    return f'{fio} | {phone}'
+
