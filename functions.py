@@ -38,7 +38,7 @@ def search(book: str, info: str) -> str:
 
 def change()-> None:
     """Изменение/удаление данных в справочнике."""
-    with open('book.txt', 'r', encoding='utf-8') as file^
+    with open('book.txt', 'r', encoding='utf-8') as file:
         data = file.read().split('\n')
     print('\n'.join(data))
     data_to_edit = input('Введите данные для поиска:')
