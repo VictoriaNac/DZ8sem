@@ -15,16 +15,23 @@ def add_data() -> None:
 def find_data() -> None:
     """Печатает результат поиска по справочнику."""
     with open('book.txt', 'r', encoding='utf-8') as file:
-        data = file.read()
-    print(data)
+        data = file.read().split('\n')
+    print('\n'join(data))
     data_to_find = input('Введите данные для поиска: ')
     print(search(data, data_to_find))
 
 
 def search(book: str, info: str) -> str:
     """Находит в списке записи по определенному критерию поиска"""
-    book = book.split('\n')
-    for contact in book:
-        if info in contact:
-            return contact
+    result = [contact for contact in book if info in contact]
+    if not result:
+        return result
+    elif len(result)==1:
+        return result[0]
+    elif len(result)>1:
+        print()
+        print('-----------------')
+        print('\n'join(result))
+        new_info = input ('ВВедите данные для уточнения')
+        return search(result, new_info)
     return 'Совпадений не найдено'
